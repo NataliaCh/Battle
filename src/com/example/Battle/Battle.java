@@ -1,65 +1,83 @@
 package com.example.Battle;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public class Battle {
 
-    private static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+    private static final List<Integer> AVAILABLE_SIZES = new ArrayList<Integer>() {
+        {
+
+            add(3);
+            add(4);
+            add(5);
+        }
+    };
 
     public static void main(String[] args) throws IOException {
-        int size = readInt("Выбери размер поля (3, 4 или 5):");
+        int size = chooseSize();
 
         Table table = new Table(size);
-        table.shipPlacement();
-        table.printContent();
+        AutoTable autotable = new AutoTable(size);
+
+        table.init();
+        print("");
+        autotable.init();
+
+        table.putShips();
+//autotable.autoPutShips(size);
+
+        List<String> listField = transformIntoList(table);
+        InputReader reader = InputReader.create();
+
+
     }
 
-    private static int readInt(String message) throws IOException {
-        print(message);
-        return Integer.parseInt(input.readLine());
+    private static List<String> transformIntoList(Table table) {
+        String field = table.toString();
+
+        String [] masfield = field.split(" ");
+        /*for (String s:listField) {
+            System.out.print(s);
+        }*/
+        return Arrays.asList(masfield);
     }
 
-    static class Table {
+    public static int chooseSize() throws IOException {
+        print(generateMessage(AVAILABLE_SIZES));
 
-        private int[][] array;
-
-        public Table(int capacity) {
-            this.array = new int[capacity][capacity];
+        InputReader reader = InputReader.create();
+        while (true) {
+            int size = reader.readInt();
+            if (AVAILABLE_SIZES.contains(size)) {
+                return size;
+            } else {
+                print("Invalid value");
+            }
         }
+    }
 
-        public void printContent() {
-            for (int[] one : array) {
-                for (int second : one) {
-                    System.out.print(second + " ");
-                }
-                System.out.println();
+    private static String generateMessage(List<Integer> availableSizes) {
+        String msg = "";
+
+        Iterator<Integer> itr = availableSizes.iterator();
+        while (itr.hasNext()) {
+            msg += itr.next().toString();
+
+            if (itr.hasNext()) {
+                msg += ",";
             }
         }
 
-        private void shipPlacement() throws IOException {
-            for (int i = 0; i < 3; i++) {
-                printContent();
-
-                int row = readInt("Расставь свои корабли. Выбери ряд(1,2 или 3):");
-                int column = readInt("Выбери столбец(1,2 или 3):");
-
-                row -= 1;
-                column -= 1;
-
-                markShip(row, column);
-            }
-        }
-
-        public void markShip(int row, int column) {
-            array[row][column] = 1;
-        }
+        return "Choose battleField size (" + msg + "):";
     }
 
-    private static void print(String text) {
+    public static void print(String text) {
         System.out.println(text);
     }
-}
 
- 
+
+}

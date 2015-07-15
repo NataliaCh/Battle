@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="33cb1e6f-a82f-41bb-b0a4-c06137dd0568" name="Default" comment="jr">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Battle/com/example/Battle/AutoTable.class" afterPath="$PROJECT_DIR$/out/production/Battle/com/example/Battle/AutoTable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Battle/com/example/Battle/Battle.class" afterPath="$PROJECT_DIR$/out/production/Battle/com/example/Battle/Battle.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/Battle/AutoTable.java" afterPath="$PROJECT_DIR$/src/com/example/Battle/AutoTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/Battle/Table.java" afterPath="$PROJECT_DIR$/src/com/example/Battle/Table.java" />
+    <list default="true" id="33cb1e6f-a82f-41bb-b0a4-c06137dd0568" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Battle.iws" />
@@ -31,8 +27,8 @@
       <file leaf-file-name="Battle.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/example/Battle/Battle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.68115944">
-              <caret line="44" column="36" selection-start-line="44" selection-start-column="36" selection-end-line="45" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.26231885">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -86,6 +82,7 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
@@ -404,7 +401,13 @@
       <option name="project" value="LOCAL" />
       <updated>1436972767706</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="jr">
+      <created>1436972842138</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1436972842138</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -856,8 +859,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/Battle/Battle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68115944">
-          <caret line="44" column="36" selection-start-line="44" selection-start-column="36" selection-end-line="45" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.26231885">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>

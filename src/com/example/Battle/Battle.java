@@ -28,7 +28,9 @@ public class Battle {
         autotable.init();
 
         table.putShips();
-//autotable.autoPutShips(size);
+        print("");
+        autotable.autoPutShips(size);
+
 
         List<String> listField = transformIntoList(table);
         InputReader reader = InputReader.create();
@@ -39,7 +41,7 @@ public class Battle {
     private static List<String> transformIntoList(Table table) {
         String field = table.toString();
 
-        String [] masfield = field.split(" ");
+        String[] masfield = field.split(" ");
         /*for (String s:listField) {
             System.out.print(s);
         }*/

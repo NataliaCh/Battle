@@ -9,24 +9,22 @@ public class AutoTable extends Table {
 
     public void autoPutShips(int battleFieldSize) {
 
-        while (true)
 
-            for (int k = 0; k < 3; k++) {
+        for (int k = 0; k < 3; k++) {
+            while (true)
                 try {
                     Random random = new Random();
 
-                    int horNumb = random.nextInt(battleFieldSize + 1);
-
-                    int verNumb = random.nextInt(battleFieldSize + 1);
-
-
-                    array[horNumb][verNumb] = 9;
-
-                    print();
+                    int horNumb = random.nextInt(battleFieldSize) + 1;
+                    int verNumb = random.nextInt(battleFieldSize) + 1;
+                    Object [][] massiv = array;
+                    massiv[horNumb][verNumb] = "S";
+                    break;
 
                 } catch (NumberFormatException ne) {
                 }
-            }
+        }
+        print();
 
     }
 }

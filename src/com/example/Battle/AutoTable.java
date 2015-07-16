@@ -17,8 +17,6 @@ public class AutoTable extends Table {
 
                     int horNumb = random.nextInt(battleFieldSize) + 1;
                     int verNumb = random.nextInt(battleFieldSize) + 1;
-                    Object [][] massiv = array;
-                    massiv[horNumb][verNumb] = "S";
                     break;
 
                 } catch (NumberFormatException ne) {

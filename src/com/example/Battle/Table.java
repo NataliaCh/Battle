@@ -1,80 +1,51 @@
 package com.example.Battle;
 
-import java.util.Iterator;
-
 public class Table {
 
-    Object[][] array;
+    private final String[][] array;
+    private final String template;
+    private final int size;
 
-    public Table(int battleFieldSize) {
-        this.array = new Object[battleFieldSize + 1][battleFieldSize + 1];
+    public Table(int size) {
+        this.size = size;
+        this.template = createTemplate(size);
+        this.array = new String[size][size];
+
 
     }
 
-    public void init() {
-        for (int k = 0; k < array.length; k++) {
-            for (int a = 0; a < array.length; a++) {
-                array[k][a] = "_";
+    private String createTemplate(int size) {
+        StringBuilder b = new StringBuilder(size * 4 + 2);
+        for (int step = 0; step < size+1; step++) b.append("%-3s");
+        b.append("\n");
+        return b.toString();
+    }
+
+    public void print() {
+        String [][] numberedArray = new String[size+1][size+1];
+        for (int i = 0; i<numberedArray.length; i++) {
+            for (int j = 0; j < numberedArray.length; j++) {
+                numberedArray[i][0] = String.valueOf(i);
+                numberedArray[0][j] = String.valueOf(j);
             }
         }
-        addRowsNumeric();
-        print();
+            System.arraycopy(array, 0, numberedArray, 1, array.length);
+        for (String[] nested : numberedArray) System.out.printf(template, replaceNulls(nested, "*"));
     }
 
-    void print() {
-        int length = array.length;
-        for (int rowIndex = 0; rowIndex < length; rowIndex++) {
-            for (int columnIndex = 0; columnIndex < length; columnIndex++) {
-                System.out.print(array[rowIndex][columnIndex] + "|");
-            }
-            System.out.println();
+    public void setShip(int row, int column) {
+        if (row < 0 || column < 0) throw new IllegalArgumentException("Too small");
+        if (row > size - 1 || column > size - 1) throw new IllegalArgumentException("Too big");
+
+        System.out.println("Ok");
+    }
+
+    private String[] replaceNulls(String[] nested, String value) {
+        String[] newArray = new String[nested.length];
+        for (int index = 0; index < nested.length; index++) {
+            String element = nested[index];
+            newArray[index] = (element == null) ? value : element;
         }
-    }
-
-    private void addRowsNumeric() {
-        for (int i = 0; i < array.length; i++) {
-            array[0][i] = i;
-            array[i][0] = i;
-        }
-    }
-
-    public String toString() {
-        String field = "";
-        for (Object f :array) {
-                field += f.toString() + " ";
-            }
-        return field;
-
-    }
-
-    public void putShips() throws IndexOutOfBoundsException {
-
-        for (int k = 0; k < 3; k++) {
-            System.out.println("Enter number of row and number of column with whitespace between them");
-
-            InputReader reader = InputReader.create();
-            while (true) {
-                try {
-                    String[] mas = reader.readLine().split(" ");
-                    int i = Integer.parseInt(mas[0]);
-                    int j = Integer.parseInt(mas[1]);
-
-                    Object[][] massiv = array;
-
-                    if (i < array.length && j < array.length) {
-                            //ne rabotaet proverka na kasaniya korablei drug k drugu
-                        if (massiv[i + 1][j] != "S" && massiv[i - 1][j] != "S" && massiv[i][j + 1] != "S"
-                                    && massiv[i][j - 1] != "S" && massiv[i][j] != "S") {
-                                massiv[i][j] = "S";
-                                print();
-                                break;
-                            } else System.out.println("isn't allowed");
-                    } else System.out.println("Out of field");
-
-                } catch (NumberFormatException ne) {
-                    System.out.println("plz, check entered data");
-                }
-            }
-        }
+        return newArray;
     }
 }

@@ -11,30 +11,30 @@ public class Battle {
     private static final List<Integer> AVAILABLE_SIZES = new ArrayList<Integer>() {
         {
 
-            add(3);
-            add(4);
             add(5);
+            add(7);
+            add(10);
         }
     };
 
     public static void main(String[] args) throws IOException {
         int size = chooseSize();
 
-        Table table = new Table(size);
-        AutoTable autotable = new AutoTable(size);
-
-        table.init();
-        print("");
-        autotable.init();
-
-        table.putShips();
-        print("");
-        autotable.autoPutShips(size);
-
-
-        List<String> listField = transformIntoList(table);
         InputReader reader = InputReader.create();
+        Table table = new Table(size);
+        table.print();
+        while (true) {
+            try {
+                int row = reader.readInt();
+                int column = reader.readInt();
 
+                table.setShip(row, column);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        //AutoTable autotable = new AutoTable(size);
 
     }
 

@@ -22,6 +22,7 @@ public class Battle {
 
         InputReader reader = InputReader.create();
         Table table = new Table(size);
+        table.initArray();
         table.print();
         while (true) {
             try {

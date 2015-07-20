@@ -3,34 +3,51 @@ package com.example.Battle;
 public class Table {
 
     private final String[][] array;
+    private String[][] numberedArray;
     private final String template;
-    private final int size;
+    private int size;
 
     public Table(int size) {
         this.size = size;
         this.template = createTemplate(size);
         this.array = new String[size][size];
-
+        this.numberedArray = new String[size + 1][size + 1];
 
     }
 
     private String createTemplate(int size) {
         StringBuilder b = new StringBuilder(size * 4 + 2);
-        for (int step = 0; step < size+1; step++) b.append("%-3s");
+        for (int step = 0; step < size + 1; step++) b.append("%-3s");
         b.append("\n");
         return b.toString();
     }
 
-    public void print() {
-        String [][] numberedArray = new String[size+1][size+1];
-        for (int i = 0; i<numberedArray.length; i++) {
+    public String[][] initArray() {
+
+        for (int i = 0; i < numberedArray.length; i++) {
             for (int j = 0; j < numberedArray.length; j++) {
                 numberedArray[i][0] = String.valueOf(i);
                 numberedArray[0][j] = String.valueOf(j);
             }
         }
-            System.arraycopy(array, 0, numberedArray, 1, array.length);
-        for (String[] nested : numberedArray) System.out.printf(template, replaceNulls(nested, "*"));
+        return numberedArray;
+    }
+
+    public void print() {
+
+        for (String[] nested : array) {
+            String[] nest = replaceNulls(nested, "*");
+            for (int i = 0; i < numberedArray.length; i++) {
+                for (int j = 0; j < numberedArray.length; j++) {
+                    if (i == 0 || j == 0) {
+                        System.out.printf(template, numberedArray[i][j]);
+                    } else {
+                        System.out.printf(template, nest);
+                    }
+
+                }
+            }
+        }
     }
 
     public void setShip(int row, int column) {

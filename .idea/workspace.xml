@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33cb1e6f-a82f-41bb-b0a4-c06137dd0568" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Battle/com/example/Battle/AutoTable.class" afterPath="$PROJECT_DIR$/out/production/Battle/com/example/Battle/AutoTable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Battle/com/example/Battle/Battle.class" afterPath="$PROJECT_DIR$/out/production/Battle/com/example/Battle/Battle.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/Battle/Battle.java" afterPath="$PROJECT_DIR$/src/com/example/Battle/Battle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/Battle/Table.java" afterPath="$PROJECT_DIR$/src/com/example/Battle/Table.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Battle.iws" />
@@ -464,7 +460,13 @@
       <option name="project" value="LOCAL" />
       <updated>1437068778089</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="jr">
+      <created>1437405313407</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1437405313407</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">

@@ -1,29 +1,33 @@
 package com.example.Battle;
 
+import java.util.Formatter;
+
 public class Table {
 
     private final String[][] array;
     private String[][] numberedArray;
-    private final String template;
+   // private final String template;
     private int size;
 
     public Table(int size) {
         this.size = size;
-        this.template = createTemplate(size);
+       // this.template = createTemplate(size);
         this.array = new String[size][size];
         this.numberedArray = new String[size + 1][size + 1];
 
     }
 
-    private String createTemplate(int size) {
+     private String createTemplate(int size) {
         StringBuilder b = new StringBuilder(size * 4 + 2);
-        for (int step = 0; step < size + 1; step++) b.append("%-3s");
+
+        for (int step = 0; step < size + 1; step++)
+        b.append("%-3s");
         b.append("\n");
         return b.toString();
     }
 
-    public String[][] initArray() {
 
+    public String[][] initArray() {
         for (int i = 0; i < numberedArray.length; i++) {
             for (int j = 0; j < numberedArray.length; j++) {
                 numberedArray[i][0] = String.valueOf(i);
@@ -34,19 +38,18 @@ public class Table {
     }
 
     public void print() {
-
-        for (String[] nested : array) {
-            String[] nest = replaceNulls(nested, "*");
-            for (int i = 0; i < numberedArray.length; i++) {
-                for (int j = 0; j < numberedArray.length; j++) {
-                    if (i == 0 || j == 0) {
-                        System.out.printf(template, numberedArray[i][j]);
-                    } else {
-                        System.out.printf(template, nest);
-                    }
-
-                }
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                String element = array[i][j];
+                array[i][j] = (element == null) ? "*" : element;
             }
+        }
+        for (int i = 0; i < numberedArray.length; i++) {
+            for (int j = 0; j < numberedArray.length; j++) {
+                System.out.printf("%-3s", (i == 0 || j == 0 ? numberedArray[i][j] : array[i - 1][j - 1]));
+
+            }
+            System.out.println();
         }
     }
 
@@ -57,12 +60,12 @@ public class Table {
         System.out.println("Ok");
     }
 
-    private String[] replaceNulls(String[] nested, String value) {
+    /*private String[] replaceNulls(String[] nested, String value) {
         String[] newArray = new String[nested.length];
         for (int index = 0; index < nested.length; index++) {
             String element = nested[index];
             newArray[index] = (element == null) ? value : element;
         }
         return newArray;
-    }
+    }*/
 }

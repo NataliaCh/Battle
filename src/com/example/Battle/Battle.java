@@ -20,23 +20,13 @@ public class Battle {
     public static void main(String[] args) throws IOException {
         int size = chooseSize();
 
-        InputReader reader = InputReader.create();
         Table table = new Table(size);
-        table.initArray();
+        table.numbersInit();
+        String[][] sea = table.arrayInit();
         table.print();
-        while (true) {
-            try {
-                int row = reader.readInt();
-                int column = reader.readInt();
 
-                table.setShip(row, column);
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-
-        //AutoTable autotable = new AutoTable(size);
-
+        ShipSetter shipSetter = new ShipSetter(sea, size);
+        shipSetter.setShip();
     }
 
     private static List<String> transformIntoList(Table table) {

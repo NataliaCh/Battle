@@ -5,7 +5,7 @@ import java.util.Formatter;
 
 public class Table {
 
-    private final String[][] array;
+    protected String[][] array;
     private String[][] numberedArray;
     // private final String template;
     private int size;

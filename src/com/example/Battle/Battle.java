@@ -26,7 +26,8 @@ public class Battle {
         table.print();
 
         ShipSetter shipSetter = new ShipSetter(sea, size);
-        shipSetter.setShip();
+        table.array = shipSetter.setShip();
+        table.print();
     }
 
     private static List<String> transformIntoList(Table table) {

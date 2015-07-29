@@ -16,7 +16,7 @@ public class InputReader {
             String line = readLine().trim();
             try {
                 return Integer.parseInt(line);
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 print("Expected int but was: '" + line + "'");
             }
         }
@@ -25,6 +25,8 @@ public class InputReader {
     public String readLine() {
         while (true) {
             try {
+                String line = input.readLine().trim();
+                if (line.equals("exit")|| line.equals("q")|| line.equals("quit")) System.exit(0);
                 return input.readLine();
             } catch (Exception e) {
                 print("Unexpected error occurs: " + e.getLocalizedMessage());

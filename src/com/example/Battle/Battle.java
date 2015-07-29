@@ -25,7 +25,7 @@ public class Battle {
         String[][] sea = table.arrayInit();
         table.print();
 
-        ShipSetter shipSetter = new ShipSetter(sea, size);
+        ShipSetter shipSetter = new ShipSetter(sea);
         table.array = shipSetter.setShip();
         table.print();
 

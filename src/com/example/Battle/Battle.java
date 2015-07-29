@@ -28,6 +28,12 @@ public class Battle {
         ShipSetter shipSetter = new ShipSetter(sea, size);
         table.array = shipSetter.setShip();
         table.print();
+
+        print("make a shot");
+        InputReader reader = new InputReader();
+        int target = reader.readInt();
+
+
     }
 
     private static List<String> transformIntoList(Table table) {

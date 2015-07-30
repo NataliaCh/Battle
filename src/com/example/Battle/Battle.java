@@ -2,7 +2,6 @@ package com.example.Battle;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -10,7 +9,6 @@ public class Battle {
 
     private static final List<Integer> AVAILABLE_SIZES = new ArrayList<Integer>() {
         {
-
             add(5);
             add(7);
             add(10);
@@ -18,32 +16,13 @@ public class Battle {
     };
 
     public static void main(String[] args) throws IOException {
-        int size = chooseSize();
-
-        Table table = new Table(size);
-        table.numbersInit();
-        String[][] sea = table.arrayInit();
+        Table table = new Table(chooseSize());
         table.print();
 
-        ShipSetter shipSetter = new ShipSetter(sea);
-        table.array = shipSetter.setShip();
+        TableShipSetter tableShipSetter = new TableShipSetter(table);
+        tableShipSetter.setShip();
+
         table.print();
-
-        print("make a shot");
-        InputReader reader = new InputReader();
-        int target = reader.readInt();
-
-
-    }
-
-    private static List<String> transformIntoList(Table table) {
-        String field = table.toString();
-
-        String[] masfield = field.split(" ");
-        /*for (String s:listField) {
-            System.out.print(s);
-        }*/
-        return Arrays.asList(masfield);
     }
 
     public static int chooseSize() throws IOException {

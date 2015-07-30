@@ -27,7 +27,7 @@ public class InputReader {
             try {
                 String line = input.readLine().trim();
                 if (line.equals("exit")|| line.equals("q")|| line.equals("quit")) System.exit(0);
-                return input.readLine();
+                return line;
             } catch (Exception e) {
                 print("Unexpected error occurs: " + e.getLocalizedMessage());
             }

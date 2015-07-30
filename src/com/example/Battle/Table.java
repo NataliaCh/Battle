@@ -1,72 +1,46 @@
 package com.example.Battle;
 
+import com.example.Battle.exception.LocationIsOutOfTheSeaException;
+import com.example.Battle.exception.ShipCollisionException;
+
 import java.lang.String;
-import java.util.Formatter;
+import java.util.Arrays;
 
 public class Table {
 
-    protected String[][] array;
-    private String[][] numberedArray;
-    // private final String template;
-    private int size;
+    public static final String EMPTY = "*";
+    public static final String SHIP = "S";
+
+    private String[][] array;
 
     public Table(int size) {
-        this.size = size;
-        // this.template = createTemplate(size);
         this.array = new String[size][size];
-        this.numberedArray = new String[size + 1][size + 1];
 
-    }
-
-    private String createTemplate(int size) {
-        StringBuilder b = new StringBuilder(size * 4 + 2);
-
-        for (int step = 0; step < size + 1; step++)
-            b.append("%-3s");
-        b.append("\n");
-        return b.toString();
-    }
-
-
-    public String[][] numbersInit() {
-        for (int i = 0; i < numberedArray.length; i++) {
-            for (int j = 0; j < numberedArray.length; j++) {
-                numberedArray[i][0] = String.valueOf(i);
-                numberedArray[0][j] = String.valueOf(j);
-            }
-        }
-        return numberedArray;
+        for (String[] each : array) Arrays.fill(each, EMPTY);
     }
 
     public void print() {
-
-        for (int i = 0; i < numberedArray.length; i++) {
-            for (int j = 0; j < numberedArray.length; j++) {
-                System.out.printf("%-3s", (i == 0 || j == 0 ? numberedArray[i][j] : array[i - 1][j - 1]));
-            }
-            System.out.println();
-        }
+        new ArrayPrinter2D(array).print();
     }
 
-    public String[][] arrayInit() {
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array.length; j++) {
-                String element = array[i][j];
-                array[i][j] = (element == null) ? "*" : element;
-            }
-        }
-        return array;
+    public Point checkPoint(Point point) throws LocationIsOutOfTheSeaException {
+        if (!isInRange(point.row)) throw new LocationIsOutOfTheSeaException();
+        if (!isInRange(point.column)) throw new LocationIsOutOfTheSeaException();
+        return point;
     }
 
-
+    private boolean isInRange(int location) {
+        return location > 0 && location < array.length;
     }
 
-    /*private String[] replaceNulls(String[] nested, String value) {
-        String[] newArray = new String[nested.length];
-        for (int index = 0; index < nested.length; index++) {
-            String element = nested[index];
-            newArray[index] = (element == null) ? value : element;
-        }
-        return newArray;
-    }*/
+    public String set(int row, int col) {
+        if (isSet(row, col)) throw new ShipCollisionException();
+
+        return array[row][col] = SHIP;
+    }
+
+    private boolean isSet(int row, int col) {
+        return !array[row][col].equals(EMPTY);
+    }
+}
 
